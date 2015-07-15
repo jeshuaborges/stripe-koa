@@ -1,0 +1,32 @@
+<% extend 'app/views/layouts/template.ect' %>
+
+<div class="pure-g">
+  <div class="pure-u-1-5"></div>
+  <div class="pure-u-3-5">
+    <form action="" method="POST" id="payment-form" class="pure-form pure-form-aligned">
+      <span class="payment-errors"></span>
+
+      <div class="pure-control-group">
+        <label for="number">Card Number</label>
+        <input id="number" type="text" size="20" data-stripe="number">
+      </div>
+
+      <div class="pure-control-group">
+        <label for="cvc">CVC</label>
+        <input id="cvc" type="text" size="4" data-stripe="cvc">
+      </div>
+
+      <div class="pure-control-group">
+        <label for="exp">Expiration</label>
+        <input id="exp" type="text" size="2" data-stripe="exp-month" placeholder="mm">
+        <span> / </span>
+        <input type="text" size="4" data-stripe="exp-year" placeholder="yyyy">
+      </div>
+
+      <div class="pure-controls">
+        <button type="submit" class="pure-button pure-button-primary">Submit Payment</button>
+      </div>
+    </form>
+  </div>
+  <div class="pure-u-1-5"></div>
+</div>

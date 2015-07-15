@@ -1,0 +1,41 @@
+{
+  "name": "pocket-stripe-koa",
+  "version": "0.0.1",
+  "description": "A simple stripe integration using koa.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --harmony index.js",
+    "test": "mocha --harmony --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "Jeshua Borges",
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "bookshelf": "^0.8.1",
+    "config": "^1.12.0",
+    "ect": "^0.5.9",
+    "knex": "^0.8.6",
+    "koa": "^0.19.1",
+    "koa-body": "^1.2.1",
+    "koa-router": "^4.3.2",
+    "koa-static": "^1.4.9",
+    "koa-views": "^3.0.0",
+    "lodash": "^3.10.0",
+    "pg": "^4.4.0"
+  },
+  "devDependencies": {
+    "co-mocha": "^1.1.2",
+    "koa-logger": "^1.2.2",
+    "mocha": "^2.2.4",
+    "should": "^6.0.1",
+    "supertest": "^0.15.0"
+  },
+  "engines": {
+    "node": ">=0.11.x"
+  }
+}
