@@ -1,29 +1,31 @@
 module.exports = {
 
-  development: {
+  local: {
     client: 'postgresql',
+    debug: true,
     connection: {
-      database: 'pocket_stripe_koa_development'
+      database: 'pocket_stripe_koa_development',
+      user:     '',
+      password: ''
     },
     migrations: {
       tableName: 'knex_migrations'
     }
   },
 
-  production: {
-    client: 'postgresql',
+  development: {
+    client: 'mysql',
     connection: {
-      database: 'pocket_stripe_koa_production',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
+      host:     'homework-jesh.cnjorcjciimm.us-east-1.rds.amazonaws.com',
+      database: 'homeworkdb',
+      user:     'jesh',
+      password: 'mK4cE(JhMc3yzcNT'
     },
     migrations: {
       tableName: 'knex_migrations'
     }
-  }
+  },
+
+  production: {}
 
 };

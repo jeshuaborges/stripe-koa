@@ -1,10 +1,11 @@
-var Checkout = require('../../app/models/checkout'),
-		stripe 	 = require('../../utils/stripe');
+var Customer 			 = require('../models/customer'),
+		CustomerCreate = require('../domain/customer_create'),
+		stripe 	 			= require('../../utils/stripe');
 
 module.exports = {
 	new: function *(next) {
-		yield this.render('index.ect', {
-			title: 'Render view template'
+		yield this.render('customers/new.ect', {
+			title: 'Create Customer'
 		});
 
 		yield next;
@@ -13,26 +14,22 @@ module.exports = {
 	create: function *(next) {
 		params = this.request.body;
 
-		var checkout = yield new Customer({token: params.stripeToken}).save();
+		var customer = yield new CustomerCreate({
+			plan:   'premium',
+			source: params.stripeToken
+		}).run();
 
-		stripe.customers.createSubscription(params.stripeToken,
-		  {plan: 'premium'},
-		  function(err, subscription) {
-		    console.warn(subscription);
-		  }
-		);
-
-		this.redirect('/checkouts/'+ checkout.id);
+		this.redirect('/customers/'+ customer.id);
 
 		yield next;
 	},
 
 	show: function *(next) {
-		var checkout = yield new Checkout({'id': this.params.id}).fetch();
+		var customer = yield new Customer({'id': this.params.id}).fetch();
 
-		yield this.render('show.ect', {
+		yield this.render('customers/show.ect', {
 			title: 	  'Success!',
-			checkout: checkout
+			customer: customer.attributes
 		});
 
 		yield next;

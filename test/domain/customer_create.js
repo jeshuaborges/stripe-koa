@@ -26,4 +26,11 @@ describe('customerCreate', function() {
       });
     });
   });
+
+  it.only('returns a customer object', function(done) {
+    command.run().then(function(results) {
+      assert(results.attributes.email == 'foo@bar.com');
+      done();
+    })
+  });
 });
