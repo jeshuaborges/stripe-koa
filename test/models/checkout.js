@@ -6,7 +6,9 @@ require('co-mocha');
 
 describe('Checkout', function() {
   beforeEach(function *() {
-    knex(new Checkout().tableName).del()
+    knex(new Checkout().tableName).del().then(function *() {
+      yield;
+    });
   });
 
   it('creates an instance of user', function *() {
@@ -23,7 +25,9 @@ describe('Checkout', function() {
   it('sets id when saved', function *() {
     var token = 'foobar'
     checkout = new Checkout({token: token})
-    yield checkout.save();
-    assert(checkout.id);
+    checkout.save().then(function*(obj) {
+      assert(checkout.id);
+      yield;
+    });
   });
 });

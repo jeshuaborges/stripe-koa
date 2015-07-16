@@ -14,5 +14,6 @@ module.exports = {
   },
   session: {
     secretKey: 'myKoajsSecretKey'
-  }
+  },
+  stripe: 'sk_test_ClHBC1uVtkE2KYomRd2DUnwH'
 };
